@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-light" style="background-color:#74479e;">
+        <div class="container-fluid">
+          <p class="navbar-brand">Student Life Game</p>
+        </div>
+    </nav>
+    <div class="container"> 
+        <div class="row mt-4">
+            <div class="col">
+                <p>HP: <span id='hp'>100</span></p>
+                <p>IQ: <span id='iq'>100</span></p>
+                <p>Happiness: <span id='ha'тщеу>100</span></p>
+            </div>
+        </div>
+        <script>
+            function universal_click(field_id)
+            {
+                let dict = {
+                    'hp': 4,
+                    'iq': 6,
+                    'ha': 3
+                };
+                if (field_id == 'all')
+                {
+                    for ([key, val] of Object.entries(dict))
+                    {
+                        //console.log(key, val)
+                        (document.getElementById(key)).innerHTML = parseInt((document.getElementById(key)).innerHTML)+4;
+                    }
+                }
+                else { document.getElementById(field_id).innerHTML = parseInt(document.getElementById(field_id).innerHTML)+dict[field_id]; }
+            }
+        </script>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="btn btn-primary" onclick="universal_click('hp')">Поесть</div>
+                <div class="btn btn-primary" onclick="universal_click('iq')">Поучиться</div>
+                <div class="btn btn-primary" onclick="universal_click('ha')">Поспать</div>
+                <div class="btn btn-primary" onclick="universal_click('all')">Сделать всё хорошо</div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col">
+                <div class="btn btn-warning">Сохранить значения на сервер</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
