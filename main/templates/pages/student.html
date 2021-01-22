@@ -15,9 +15,9 @@
     <div class="container"> 
         <div class="row mt-4">
             <div class="col">
-                <p>HP: <span id='hp'>100</span></p>
-                <p>IQ: <span id='iq'>100</span></p>
-                <p>Happiness: <span id='ha'тщеу>100</span></p>
+                <p>HP: <span id='hp'>{{ hp }}</span></p>
+                <p>IQ: <span id='iq'>{{ iq }}</span></p>
+                <p>Happiness: <span id='ha'>{{ ha }}</span></p>
             </div>
         </div>
         <script>
@@ -49,9 +49,23 @@
         </div>
         <div class="row mt-4">
             <div class="col">
-                <div class="btn btn-warning">Сохранить значения на сервер</div>
+                <form method="POST" id="form">
+                    {% csrf_token %}
+                    <input type="hidden" name="hp_hidden" id="hp_hidden" value="0">
+                    <input type="hidden" name="iq_hidden" id="iq_hidden" value="0">
+                    <input type="hidden" name="ha_hidden" id="ha_hidden" value="0">
+                    <button class="btn btn-warning" onclick="equality()" type="submit" form="form">Сохранить значения на сервер</>
+                </form>
             </div>
         </div>
     </div>
+    <script>
+        function equality()
+        {
+            (document.getElementById('hp_hidden')).setAttribute('value', parseInt((document.getElementById('hp')).innerHTML));
+            (document.getElementById('iq_hidden')).setAttribute('value', parseInt((document.getElementById('iq')).innerHTML));
+            (document.getElementById('ha_hidden')).setAttribute('value', parseInt((document.getElementById('ha')).innerHTML));
+        }
+    </script>
 </body>
 </html>
