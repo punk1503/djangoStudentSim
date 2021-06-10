@@ -6,11 +6,18 @@ from datetime import datetime
 
 def clicker(request):
     lastStat = StudentStats.objects.last()
-    context = {
-        'hp': lastStat.hp,
-        'iq': lastStat.iq,
-        'ha': lastStat.ha
-        }
+    if lastStat:
+        context = {
+            'hp': lastStat.hp,
+            'iq': lastStat.iq,
+            'ha': lastStat.ha
+            }
+    else:
+        context = {
+            'hp': 0,
+            'iq': 0,
+            'ha': 0
+            }
     if request.method == 'POST':
         hp = request.POST['hp_hidden']
         iq = request.POST['iq_hidden']
